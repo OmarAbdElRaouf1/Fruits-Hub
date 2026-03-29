@@ -7,9 +7,14 @@ environment:
   sdk: ^3.11.1
 
 dependencies:
+  bloc: ^9.2.0
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  firebase_auth: ^6.3.0
+  firebase_core: ^4.6.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
   flutter_screenutil: ^5.9.3

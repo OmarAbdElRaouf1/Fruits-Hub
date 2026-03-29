@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_market/core/utils/app_colors.dart';
 import 'package:fruits_market/core/utils/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -8,6 +7,8 @@ class CustomButton extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return SizedBox(
       width: double.infinity,
       height: 54,
@@ -16,12 +17,12 @@ class CustomButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: colorScheme.primary,
         ),
         onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyles.bold16.copyWith(color: Colors.white),
+          style: TextStyles.bold16.copyWith(color: colorScheme.onPrimary),
         ),
       ),
     );

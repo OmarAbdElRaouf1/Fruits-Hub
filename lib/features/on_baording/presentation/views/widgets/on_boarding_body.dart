@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_market/constants.dart';
 import 'package:fruits_market/core/services/shared_preferences.dart';
-import 'package:fruits_market/core/utils/app_colors.dart';
 import 'package:fruits_market/core/widgets/custom_button.dart';
 import 'package:fruits_market/features/auth/presentation/views/login/login.dart';
 import 'package:fruits_market/features/on_baording/presentation/views/widgets/on_boarding_page_view.dart';
@@ -38,6 +37,8 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         Expanded(
@@ -50,8 +51,8 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           controller: pageController,
           count: 2,
           effect: WormEffect(
-            dotColor: Colors.grey,
-            activeDotColor: AppColors.primaryColor,
+            dotColor: colorScheme.outline,
+            activeDotColor: colorScheme.primary,
             dotHeight: 8,
             dotWidth: 8,
             spacing: 8,

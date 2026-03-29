@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_market/constants.dart';
 import 'package:fruits_market/core/services/shared_preferences.dart';
 import 'package:fruits_market/core/utils/app_text_styles.dart';
+import 'package:fruits_market/core/utils/app_theme.dart';
 import 'package:fruits_market/features/auth/presentation/views/login/login.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -22,6 +23,8 @@ class PageViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appThemeColors = Theme.of(context).extension<AppThemeColors>()!;
+
     return Column(
       children: [
         SizedBox(
@@ -60,7 +63,7 @@ class PageViewItem extends StatelessWidget {
                       child: Text(
                         'تخط',
                         style: TextStyles.bold16.copyWith(
-                          color: Color(0xFF949D9E),
+                          color: appThemeColors.mutedTextColor,
                         ),
                       ),
                     ),
@@ -78,7 +81,9 @@ class PageViewItem extends StatelessWidget {
           child: Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: TextStyles.bold16.copyWith(color: Color(0xFF4E5556)),
+            style: TextStyles.bold16.copyWith(
+              color: appThemeColors.secondaryTextColor,
+            ),
           ),
         ),
       ],

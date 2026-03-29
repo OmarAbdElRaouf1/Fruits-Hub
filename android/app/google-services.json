@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "510100294425",
+    "project_id": "fruits-market-baf37",
+    "storage_bucket": "fruits-market-baf37.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510100294425:android:ccde8649d1b27eda7a1388",
+        "android_client_info": {
+          "package_name": "com.example.fruits_market"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Uzffrg9YUOo1YMdrHtBiR36dG0HsWa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

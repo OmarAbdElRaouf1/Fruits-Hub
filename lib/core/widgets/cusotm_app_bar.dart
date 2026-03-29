@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_market/core/services/theme_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, required this.title, this.leading});
@@ -12,9 +13,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       leading: leading,
+      actions: [
+        IconButton(
+          tooltip: ThemeController.instance.isDarkMode
+              ? 'تفعيل الوضع الفاتح'
+              : 'تفعيل الوضع الداكن',
+          onPressed: ThemeController.instance.toggleTheme,
+          icon: Icon(
+            ThemeController.instance.isDarkMode
+                ? Icons.light_mode_rounded
+                : Icons.dark_mode_rounded,
+          ),
+        ),
+      ],
       title: Text(
         title,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
     );
   }
