@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_market/core/helper_functions/on_generate_route.dart';
+import 'package:fruits_market/core/services/get_it.dart';
 import 'package:fruits_market/core/services/shared_preferences.dart';
 import 'package:fruits_market/core/services/theme_controller.dart';
 import 'package:fruits_market/core/utils/app_theme.dart';
@@ -12,9 +13,8 @@ import 'package:fruits_market/generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  setupGetIt();
   await Prefs.init();
   ThemeController.instance.loadTheme();
   runApp(const FruitsMarketApp());

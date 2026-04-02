@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_market/core/utils/app_colors.dart';
 
-abstract class AppTheme {
+abstract final class AppTheme {
   static ThemeData lightTheme() {
     const colorScheme = ColorScheme.light(
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
-      surface: Color(0xFFFFFFFF),
+      surface: Colors.white,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
       onSurface: Color(0xFF111827),
@@ -16,7 +16,7 @@ abstract class AppTheme {
     return _buildTheme(
       colorScheme: colorScheme,
       scaffoldBackgroundColor: const Color(0xFFFDFDFD),
-      cardColor: const Color(0xFFFFFFFF),
+      cardColor: Colors.white,
       inputFillColor: const Color(0xFFF9FAFA),
       mutedTextColor: const Color(0xFF6B7280),
       secondaryTextColor: const Color(0xFF4B5563),
@@ -30,14 +30,14 @@ abstract class AppTheme {
       secondary: AppColors.lightSecondaryColor,
       surface: Color(0xFF111827),
       onPrimary: Color(0xFF08130D),
-      onSecondary: Color(0xFF1A1202),
+      onSecondary: Color(0xFF0D0D0D),
       onSurface: Color(0xFFF9FAFB),
       outline: Color(0xFF334155),
     );
 
     return _buildTheme(
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: const Color(0xFF09120D),
+      scaffoldBackgroundColor: const Color(0xFF0D0D0D),
       cardColor: const Color(0xFF111827),
       inputFillColor: const Color(0xFF18212F),
       mutedTextColor: const Color(0xFF9CA3AF),
@@ -60,8 +60,8 @@ abstract class AppTheme {
       fontFamily: 'Cairo',
       colorScheme: colorScheme,
       scaffoldBackgroundColor: scaffoldBackgroundColor,
-      cardColor: cardColor,
       dividerColor: dividerColor,
+      cardColor: cardColor,
     );
 
     return baseTheme.copyWith(
@@ -72,9 +72,9 @@ abstract class AppTheme {
         foregroundColor: colorScheme.onSurface,
         surfaceTintColor: Colors.transparent,
         titleTextStyle: TextStyle(
+          fontFamily: 'Cairo',
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
           color: colorScheme.onSurface,
         ),
       ),
@@ -83,13 +83,13 @@ abstract class AppTheme {
         displayColor: colorScheme.onSurface,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(
-          color: mutedTextColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 13,
-        ),
         filled: true,
         fillColor: inputFillColor,
+        hintStyle: TextStyle(
+          color: mutedTextColor,
+          fontSize: 13,
+          fontWeight: FontWeight.bold,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
           borderSide: BorderSide(color: colorScheme.outline),
@@ -110,7 +110,7 @@ abstract class AppTheme {
         ),
       ),
       iconTheme: IconThemeData(color: colorScheme.onSurface),
-      extensions: [
+      extensions: <ThemeExtension<dynamic>>[
         AppThemeColors(
           mutedTextColor: mutedTextColor,
           secondaryTextColor: secondaryTextColor,
@@ -143,7 +143,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   final Color checkBoxBorderColor;
 
   @override
-  ThemeExtension<AppThemeColors> copyWith({
+  AppThemeColors copyWith({
     Color? mutedTextColor,
     Color? secondaryTextColor,
     Color? inputFillColor,
@@ -163,18 +163,19 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   }
 
   @override
-  ThemeExtension<AppThemeColors> lerp(
+  AppThemeColors lerp(
     covariant ThemeExtension<AppThemeColors>? other,
     double t,
   ) {
-    if (other is! AppThemeColors) {
-      return this;
-    }
+    if (other is! AppThemeColors) return this;
 
     return AppThemeColors(
       mutedTextColor: Color.lerp(mutedTextColor, other.mutedTextColor, t)!,
-      secondaryTextColor:
-          Color.lerp(secondaryTextColor, other.secondaryTextColor, t)!,
+      secondaryTextColor: Color.lerp(
+        secondaryTextColor,
+        other.secondaryTextColor,
+        t,
+      )!,
       inputFillColor: Color.lerp(inputFillColor, other.inputFillColor, t)!,
       socialButtonBorderColor: Color.lerp(
         socialButtonBorderColor,
@@ -182,8 +183,11 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
         t,
       )!,
       dividerColor: Color.lerp(dividerColor, other.dividerColor, t)!,
-      checkBoxBorderColor:
-          Color.lerp(checkBoxBorderColor, other.checkBoxBorderColor, t)!,
+      checkBoxBorderColor: Color.lerp(
+        checkBoxBorderColor,
+        other.checkBoxBorderColor,
+        t,
+      )!,
     );
   }
 }
